@@ -1,4 +1,6 @@
-# j
+#sdkman-java-major-switcher
+
+A fork of [ldziedziul/j](https://github.com/ldziedziul/j)
 
 A simple script switching the current Java between installations managed by [SDKMAN](https://sdkman.io/). 
 
