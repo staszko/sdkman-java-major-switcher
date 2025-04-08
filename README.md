@@ -1,4 +1,4 @@
-#sdkman-java-major-switcher
+# sdkman-java-major-switcher
 
 A fork of [ldziedziul/j](https://github.com/ldziedziul/j)
 
