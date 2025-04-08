@@ -6,12 +6,13 @@ function print_usage() {
     \echo "Available versions: "
     \echo "$VERSIONS"
     \echo "Current: $CURRENT"
-    \echo "Usage: j <java_version>"
+    \echo "Usage: j <java_version> [distibution_name_suffix]"
 }
 
-if [[ $# -eq 1 ]]; then
+if [[ $# -eq 1 || $# -eq 2 ]]; then
   VERSION_NUMBER=$1
-  IDENTIFIER=$(\ls $SDKMAN_DIR/candidates/java | \grep -v current | \grep "^$VERSION_NUMBER." | \sort -r | \head -n 1)
+  SUFFIX="${2:-}"
+  IDENTIFIER=$(\ls $SDKMAN_DIR/candidates/java | \grep -v current | \grep "^$VERSION_NUMBER." | \awk -v sfx="$SUFFIX" '{ if ($0 ~ sfx"$") print "2"$0; else print "1"$0 }' | sort -r | cut -c2- | \head -n 1)
   sdk use java $IDENTIFIER
 else
   print_usage
